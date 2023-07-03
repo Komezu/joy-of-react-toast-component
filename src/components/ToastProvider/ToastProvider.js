@@ -1,6 +1,6 @@
 import React from 'react';
 
-import useEscapeKey from '../../hooks/use-escape-key.hook';
+import useKeydown from '../../hooks/use-keydown.hook';
 
 export const ToastContext = React.createContext();
 
@@ -35,7 +35,7 @@ function ToastProvider({ children }) {
     setToasts([]);
   }, []);
 
-  useEscapeKey(clearAllToasts);
+  useKeydown('Escape', clearAllToasts);
 
   const value = React.useMemo(() => {
     return { toasts, addToast, dismissToast };
